@@ -1,35 +1,3 @@
-{% comment %} <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Form</title>
-</head>
-<body>
-    <h1>Input Form</h1>
-    <form action="/" method="post">
-        <label for="start_date">maxTemp: </label><br>
-        <input type="date" id="start_date" name="maxTemp"><br><br>
-
-        <label for="end_date">minTemp:</label><br>
-        <input type="date" id="end_date" name="minTemp"><br><br>
-
-        <label for="city">Humidity</label><br>
-        <input type="text" id="city" name="Humidity"><br><br>
-
-        <label for="field1">precipitation:</label><br>
-        <input type="text" id="field1" name="precipitation"><br><br>
-
-        <label for="field2">Pressure</label><br>
-        <input type="text" id="field2" name="Pressure"><br><br>
-
-        <label for="field2">WindSpeed</label><br>
-        <input type="text" id="field2" name="WindSpeed"><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html> {% endcomment %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,22 +10,22 @@
     <h1>Weather Prediction</h1>
     <form action="/predict" method="post">
         <label for="temp_max">Maximum Temperature:</label>
-        <input type="number" name="temp_max" id="temp_max" required><br>
+        <input type="text" name="temp_max" id="temp_max" required><br>
 
         <label for="temp_min">Minimum Temperature:</label>
-        <input type="number" name="temp_min" id="temp_min" required><br>
+        <input type="text" name="temp_min" id="temp_min" required><br>
 
         <label for="precipitation">Precipitation:</label>
-        <input type="number" name="precipitation" id="precipitation" required><br>
+        <input type="text" name="precipitation" id="precipitation" required><br>
 
         <label for="humidity">Relative Humidity:</label>
-        <input type="number" name="humidity" id="humidity" required><br>
+        <input type="text" name="humidity" id="humidity" required><br>
 
         <label for="pressure">Pressure:</label>
-        <input type="number" name="pressure" id="pressure" required><br>
+        <input type="text" name="pressure" id="pressure" required><br>
 
         <label for="wind_speed">Wind Speed:</label>
-        <input type="number" name="wind_speed" id="wind_speed" required><br>
+        <input type="text" name="wind_speed" id="wind_speed" required><br>
 
         <input type="submit" value="Predict">
     </form>
