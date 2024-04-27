@@ -289,22 +289,101 @@
 #     app.run(debug=True)
 
 
+
+# ye run hua bt negative value de raha h+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+# from flask import Flask, render_template, request
+# import numpy as np
+# from keras.models import load_model
+# from keras.losses import MeanSquaredError
+# import traceback
+
+# app = Flask(__name__)
+
+# try:
+#     # Load the Keras model
+#     model = load_model('model_updated.keras')
+
+#     # Function to preprocess user inputs
+#     def preprocess_input(temp_max, temp_min, precipitation, humidity, pressure, wind_speed):
+#         # Convert inputs to numpy array
+#         inputs = np.array([[temp_max, temp_min, precipitation, humidity, pressure, wind_speed]])
+#         return inputs
+
+#     # Function to make weather prediction
+#     def predict_weather(inputs):
+#         # Compile model with CustomMSE loss function
+#         model.compile(optimizer='adam', loss=MeanSquaredError)
+#         prediction = model.predict(inputs)
+#         return prediction  # Assuming single output for weather prediction
+
+# except Exception as e:
+#     print("An error occurred while loading the model:", e)
+#     traceback.print_exc()
+
+# @app.route('/')
+# def index():
+#     return render_template('index.html')
+
+# @app.route('/predict', methods=['POST'])
+# def predict():
+#     if request.method == 'POST':
+#         try:
+#             # Get user inputs from the form
+#             temp_max = float(request.form['temp_max'])
+#             temp_min = float(request.form['temp_min'])
+#             precipitation = float(request.form['precipitation'])
+#             humidity = float(request.form['humidity'])
+#             pressure = float(request.form['pressure'])
+#             wind_speed = float(request.form['wind_speed'])
+
+#             # Preprocess inputs
+#             inputs = preprocess_input(temp_max, temp_min, precipitation, humidity, pressure, wind_speed)
+#             print("inputs are here",inputs)
+#             # Make prediction
+#             prediction = predict_weather(inputs)
+
+#             return render_template('result.html', prediction=prediction)
+#         except Exception as e:
+#             print("An error occurred while making prediction:", e)
+#             traceback.print_exc()
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
+
+
+
 from flask import Flask, render_template, request
 import numpy as np
+import pandas as pd
 from keras.models import load_model
 from keras.losses import MeanSquaredError
 import traceback
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+
+df = pd.read_csv('Nagpur_Daily_20140415_20240415.csv',skiprows=14)
+df.drop(columns=['YEAR','MO','DY'],axis=1,inplace=True)
+
+df_scaled = scaler.fit_transform(df)
+
 
 app = Flask(__name__)
 
 try:
     # Load the Keras model
-    model = load_model('model_updated.keras')
+    model = load_model('model_updated2.keras')
 
     # Function to preprocess user inputs
     def preprocess_input(temp_max, temp_min, precipitation, humidity, pressure, wind_speed):
         # Convert inputs to numpy array
         inputs = np.array([[temp_max, temp_min, precipitation, humidity, pressure, wind_speed]])
+        inputs.shape = (1,6)
+        inputs = scaler.transform(inputs)
         return inputs
 
     # Function to make weather prediction
@@ -312,7 +391,9 @@ try:
         # Compile model with CustomMSE loss function
         model.compile(optimizer='adam', loss=MeanSquaredError)
         prediction = model.predict(inputs)
-        return prediction  # Assuming single output for weather prediction
+        pred2 = scaler.inverse_transform(prediction)
+        print(pred2,"--------------------------------------------------------------")
+        return pred2  # Assuming single output for weather prediction
 
 except Exception as e:
     print("An error occurred while loading the model:", e)
@@ -339,7 +420,6 @@ def predict():
             print("inputs are here",inputs)
             # Make prediction
             prediction = predict_weather(inputs)
-
             return render_template('result.html', prediction=prediction)
         except Exception as e:
             print("An error occurred while making prediction:", e)
@@ -347,3 +427,12 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
+    
+
+
+
+
+
+# output result Weather Prediction Result
+# Predicted Weather: [[35.080322 25.34013 13.24981 54.262302 96.4537 2.9965289]]
