@@ -1,3 +1,4 @@
+<!--
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,5 +30,169 @@
 
         <input type="submit" value="Predict">
     </form>
+</body>
+</html> 
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('2.jpg'); 
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0.7;
+        }
+        
+        /* Define container2 styles */
+        .container2{
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0.7;
+        
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .column1 {
+            float:left;
+            width:45%;
+        }
+
+        .column2 {
+            float:right;
+            width:45%;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 10px;
+            color: #666;
+        }
+        
+        
+        
+      
+    </style>
+</head>
+<body>
+    <center><h1 ><b>Weather Prediction</b></h1></center>
+    <div class="column1">
+        <h1>Weather Parameter of Previous Day</h1>
+        <div class="container">
+            <form action="/predict" method="post">
+                <label for="temp_max">Maximum Temperature:</label>
+                <input type="text" name="temp_max" id="temp_max" required><br>
+        
+                <label for="temp_min">Minimum Temperature:</label>
+                <input type="text" name="temp_min" id="temp_min" required><br>
+        
+                <label for="precipitation">Precipitation:</label>
+                <input type="text" name="precipitation" id="precipitation" required><br>
+        
+                <label for="humidity">Relative Humidity:</label>
+                <input type="text" name="humidity" id="humidity" required><br>
+        
+                <label for="pressure">Pressure:</label>
+                <input type="text" name="pressure" id="pressure" required><br>
+        
+                <label for="wind_speed">Wind Speed:</label>
+                <input type="text" name="wind_speed" id="wind_speed" required><br>
+        
+                <input type="submit" value="Predict">
+            </form>
+        </div>
+    </div>
+    <div class="column2">
+        <h1>Predicted Values</h1>
+        <div class="container2">
+            <!-- <label for="max-temp">Maximum Temperature:</label>
+            <input type="text" id="max-temp" name="max-temp" placeholder="" value={{ prediction[0][0] }}>
+
+            <label for="min-temp">Minimum Temperature:</label>
+            <input type="text" id="min-temp" name="min-temp" placeholder="" value={{ prediction[0][1] }}>
+
+            <label for="humidity">Relative Humidity:</label>
+            <input type="text" id="humidity" name="humidity" placeholder="" value={{ prediction[0][2] }}>
+            
+            <label for="precipitation">Precipitation:</label>
+            <input type="text" id="precipitation" name="precipitation" placeholder="" value={{ prediction[0][3] }}>
+
+            <label for="surface-pressure">Surface Pressure:</label>
+            <input type="text" id="surface-pressure" name="surface-pressure" placeholder="" value={{ prediction[0][4] }}>
+
+            <label for="wind-speed-10m">Wind Speed at 10m:</label>
+            <input type="text" id="wind-speed-10m" name="wind-speed-10m" placeholder="" value={{ prediction[0][] }}> -->
+            <p>Predicted Weather: {{ prediction[0][0] }}</p>
+            <p>Predicted Weather: {{ prediction[0][1] }}</p>
+            <p>Predicted Weather: {{ prediction[0][2] }}</p>
+            <p>Predicted Weather: {{ prediction[0][3] }}</p>
+            <p>Predicted Weather: {{ prediction[0][4] }}</p>
+            <p>Predicted Weather: {{ prediction[0][5] }}</p>
+        </div>
+    </div>
+    
 </body>
 </html>

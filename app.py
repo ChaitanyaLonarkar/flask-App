@@ -420,7 +420,7 @@ def predict():
             print("inputs are here",inputs)
             # Make prediction
             prediction = predict_weather(inputs)
-            return render_template('result.html', prediction=prediction)
+            return render_template('index.html', prediction=prediction)
         except Exception as e:
             print("An error occurred while making prediction:", e)
             traceback.print_exc()
