@@ -1,17 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Prediction Result</title>
-</head>
-<body>
-    <h1>Weather Prediction Result</h1>
-    <p>Predicted Weather: {{ prediction[0][0] }}</p>
-    <p>Predicted Weather: {{ prediction[0][1] }}</p>
-    <p>Predicted Weather: {{ prediction[0][2] }}</p>
-    <p>Predicted Weather: {{ prediction[0][3] }}</p>
-    <p>Predicted Weather: {{ prediction[0][4] }}</p>
-    <p>Predicted Weather: {{ prediction[0][5] }}</p>
-</body>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #9ec0e4;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        opacity: 0.7;
+      }
+
+      /* Define container2 styles */
+      .container2 {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        opacity: 0.7;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      .column2 {
+        width: 45%;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 10px;
+        color: #666;
+      }
+      a {
+        text-decoration: none;
+        color: aliceblue;
+      }
+      button {
+        background: #0943a7;
+        border: none;
+        font-size: 18px;
+        color: white;
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <br />
+      <h1><b>Weather Prediction Using Neural Network</b></h1>
+
+      <div class="column2">
+        <div class="container2">
+          <h1>Predicted Values</h1>
+          <label for="max-temp">Maximum Temperature:</label>
+          <input
+            type="text"
+            id="max-temp"
+            name="max-temp"
+            placeholder=""
+            readonly
+            value="{{
+            prediction[0][0]
+            }}"
+          />
+
+          <label for="min-temp">Minimum Temperature:</label>
+          <input
+            type="text"
+            id="min-temp"
+            name="min-temp"
+            placeholder=""
+            readonly
+            value="{{
+            prediction[0][1]
+            }}"
+          />
+
+          <label for="humidity">Relative Humidity:</label>
+          <input
+            type="text"
+            id="humidity"
+            name="humidity"
+            placeholder=""
+            readonly
+            value="{{
+            prediction[0][2]
+            }}"
+          />
+
+          <label for="precipitation">Precipitation:</label>
+          <input
+            type="text"
+            id="precipitation"
+            name="precipitation"
+            placeholder=""
+            readonly
+            value="{{
+            prediction[0][3]
+            }}"
+          />
+
+          <label for="surface-pressure">Surface Pressure:</label>
+          <input
+            type="text"
+            id="surface-pressure"
+            name="surface-pressure"
+            placeholder=""
+            readonly
+            value="{{
+            prediction[0][4]
+            }}"
+          />
+
+          <label for="wind-speed-10m">Wind Speed at 10m:</label>
+          <input
+            type="text"
+            id="wind-speed-10m"
+            name="wind-speed-10m"
+            placeholder=""
+            readonly
+            value="{{
+            prediction[0][5]
+            }}"
+          />
+          <button><a href="/">Reset</a></button>
+        </div>
+      </div>
+    </center>
+  </body>
 </html>
