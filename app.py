@@ -368,7 +368,7 @@ scaler = MinMaxScaler()
 
 df = pd.read_csv('Nagpur_Daily_20140415_20240415.csv',skiprows=14)
 df.drop(columns=['YEAR','MO','DY'],axis=1,inplace=True)
-
+# print(df.tail())
 df_scaled = scaler.fit_transform(df)
 
 
@@ -382,8 +382,11 @@ try:
     def preprocess_input(temp_max, temp_min, precipitation, humidity, pressure, wind_speed):
         # Convert inputs to numpy array
         inputs = np.array([[temp_max, temp_min, precipitation, humidity, pressure, wind_speed]])
+        print(inputs,"inputs from process-input function")
         inputs.shape = (1,6)
+        print(inputs.shape,"after shaping")
         inputs = scaler.transform(inputs)
+        print(inputs,"inputs after scalling")
         return inputs
 
     # Function to make weather prediction
@@ -391,8 +394,10 @@ try:
         # Compile model with CustomMSE loss function
         model.compile(optimizer='adam', loss=MeanSquaredError)
         prediction = model.predict(inputs)
+        print(prediction,"prediction of model")
+        
         pred2 = scaler.inverse_transform(prediction)
-        print(pred2,"--------------------------------------------------------------")
+        print(pred2,"prediction of model after scalling inverse transform")
         return pred2  # Assuming single output for weather prediction
 
 except Exception as e:
@@ -417,7 +422,7 @@ def predict():
 
             # Preprocess inputs
             inputs = preprocess_input(temp_max, temp_min, precipitation, humidity, pressure, wind_speed)
-            print("inputs are here",inputs)
+            print("inputs taken froom webpage",inputs)
             # Make prediction
             prediction = predict_weather(inputs)
             return render_template('result.html', prediction=prediction)

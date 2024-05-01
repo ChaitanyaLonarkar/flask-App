@@ -128,18 +128,6 @@
             }}"
           />
 
-          <label for="humidity">Relative Humidity:</label>
-          <input
-            type="text"
-            id="humidity"
-            name="humidity"
-            placeholder=""
-            readonly
-            value="{{
-            prediction[0][2]
-            }}"
-          />
-
           <label for="precipitation">Precipitation:</label>
           <input
             type="text"
@@ -148,9 +136,21 @@
             placeholder=""
             readonly
             value="{{
+            prediction[0][2]
+            }}"
+          />
+          <label for="humidity">Relative Humidity:</label>
+          <input
+            type="text"
+            id="humidity"
+            name="humidity"
+            placeholder=""
+            readonly
+            value="{{
             prediction[0][3]
             }}"
           />
+
 
           <label for="surface-pressure">Surface Pressure:</label>
           <input
