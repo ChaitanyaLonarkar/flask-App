@@ -406,7 +406,7 @@ except Exception as e:
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -425,7 +425,10 @@ def predict():
             print("inputs taken froom webpage",inputs)
             # Make prediction
             prediction = predict_weather(inputs)
-            return render_template('result.html', prediction=prediction)
+            # arr = np.array([1.234, 2.678, 3.432])
+            p = np.around(prediction, decimals=2)
+            print(p,"kjshdjkfhsjdhfjsdfhjhsdhfjhsdfj")
+            return render_template('forecast.html', prediction=p)
         except Exception as e:
             print("An error occurred while making prediction:", e)
             traceback.print_exc()

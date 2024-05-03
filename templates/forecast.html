@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Prediction</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url(../static/bg.jpg);
+        background-position: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .contaiiner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 30px;
+        font-family: "Poppins", sans-serif;
+      }
+      .left {
+        width: 50%;
+      }
+      .left h1 {
+        font-size: xxx-large;
+      }
+      .fo {
+      }
+      .right {
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(11px);
+        -webkit-backdrop-filter: blur(11px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding-bottom: 15px;
+      }
+      .form {
+        display: flex;
+        flex-wrap: wrap;
+        width: 600.1px;
+        justify-content: center;
+      }
+
+      a {
+        text-decoration: none;
+        color: aliceblue;
+      }
+      button {
+        background: #0943a7;
+        border: none;
+        font-size: 17px;
+        color: white;
+        width: 20%;
+        padding: 9px 5px;
+        margin: 5px;
+        border-radius: 5px;
+        align-self: center;
+      }
+      i {
+        font-size: xxx-large;
+        color: #0074ff;
+      }
+      .result {
+        gap: 5px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+        text-align: center;
+        margin-bottom: 35px;
+      }
+      .result p {
+        font-weight: 500;
+        margin-top: 5px;
+        margin-bottom: 0;
+      }
+      h4 {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contaiiner">
+      <!-- <center> -->
+      <div class="left">
+        <h1 style="font-size: 57px; margin: 0">
+          Weather Prediction Using Neural Network
+        </h1>
+        <br />
+        <p style="font-size: larger; font-weight: 500; width: 590px; margin: 0">
+          Weather prediction using neural networks involves training a model on
+          historical weather data and using it to forecast future weather
+          conditions, leveraging the power of artificial intelligence to improve
+          accuracy and reliability
+        </p>
+      </div>
+      <div class="right">
+        <br />
+        <!-- <div class="container"> -->
+        <h1 style="text-align: center; margin: 0">
+          Weather Parameter of <br />Next Day
+        </h1>
+        <br />
+
+        <!-- <div class="form">
+          <form action="/predict" method="post">
+            <label for="temp_max">Maximum Temperature:</label>
+            <input
+              type="text"
+              name="temp_max"
+              id="temp_max"
+              readonly
+              value="{{
+            prediction[0][0]
+            }}"
+            />
+
+            <label for="temp_min">Minimum Temperature:</label>
+            <input
+              type="text"
+              name="temp_min"
+              id="temp_min"
+              readonly
+              value="{{
+            prediction[0][1]
+            }}"
+            />
+
+            <label for="precipitation">Precipitation:</label>
+            <input
+              type="text"
+              name="precipitation"
+              id="precipitation"
+              readonly
+              value="{{
+            prediction[0][2]
+            }}"
+            />
+
+            <label for="humidity">Relative Humidity:</label>
+            <input
+              type="text"
+              name="humidity"
+              id="humidity"
+              readonly
+              value="{{
+            prediction[0][3]
+            }}"
+            />
+
+            <label for="pressure">Pressure:</label>
+            <input
+              type="text"
+              name="pressure"
+              id="pressure"
+              readonly
+              value="{{
+            prediction[0][4]
+            }}"
+            />
+
+            <label for="wind_speed">Wind Speed:</label>
+            <input
+              type="text"
+              name="wind_speed"
+              id="wind_speed"
+              readonly
+              value="{{
+              prediction[0][5]
+              }}"
+            />
+            
+            <button ><a href="/">Reset</a></button>
+
+           
+            <br />
+          </form>
+        </div> -->
+        <div class="form">
+          <div class="result">
+            <div class="icon">
+              <i class="fa-solid fa-sun"></i>
+            </div>
+            <p>{{ prediction[0][0] }} C</p>
+            <h4>Max Temperature</h4>
+          </div>
+          <div class="result">
+            <div class="icon">
+              <i class="fa-solid fa-cloud-sun"></i>
+            </div>
+            <p>{{ prediction[0][1] }} C</p>
+            <h4>Min Temperature</h4>
+          </div>
+          <div class="result">
+            <div class="icon">
+              <i class="fa-solid fa-cloud-sun-rain"></i>
+            </div>
+            <p>{{ prediction[0][2] }} mm/day</p>
+            <h4>Precipitation</h4>
+          </div>
+          <div class="result">
+            <div class="icon">
+              <i class="fa-solid fa-cloud-rain"></i>
+            </div>
+            <p>{{ prediction[0][3] }} %</p>
+            <h4>Relative Humidity</h4>
+          </div>
+          <div class="result">
+            <div class="icon">
+              <i class="fa-solid fa-water"></i>
+            </div>
+            <p>{{ prediction[0][4] }} kPa</p>
+            <h4>Suprface Pressure</h4>
+          </div>
+          <div class="result">
+            <div class="icon">
+              <i class="fa-solid fa-wind"></i>
+            </div>
+            <p>{{ prediction[0][5] }} m/s</p>
+            <h4>Wind Speed</h4>
+          </div>
+        </div>
+        <button><a href="/">Reset</a></button>
+
+        <!-- </div> -->
+      </div>
+      <!-- </center> -->
+    </div>
+  </body>
+</html>

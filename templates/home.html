@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Prediction</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url(../static/bg.jpg);
+        background-position: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .contaiiner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 30px;
+        font-family: "Poppins", sans-serif;
+      }
+      .left {
+        width: 50%;
+      }
+      .left h1 {
+        font-size: xxx-large;
+      }
+      .fo {
+      }
+      .right {
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(11px);
+        -webkit-backdrop-filter: blur(11px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 5px 50px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      input {
+        padding: 10px;
+        border: none;
+        width: 500px;
+        margin-top: 10px;
+        border-radius: 5px;
+        font-size: 15px;
+        outline: none;
+      }
+      label {
+        font-weight: 600;
+        font-size: larger;
+      }
+      .btn {
+        background: slateblue;
+        font-size: larger;
+        font-weight: 600;
+        cursor: pointer;
+        color: aliceblue;
+      }
+    </style>
+    <!-- <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url(../static/bg-4.png);
+
+        background-color: #9ec0e4;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        opacity: 0.7;
+      }
+
+      /* Define container2 styles */
+      .container2 {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        opacity: 0.7;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        background: #0943a7;
+
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 17px;
+        width: 100%;
+      }
+
+      input[type="submit"]:hover {
+        background-color: rgb(69, 136, 195);
+      }
+
+      .column1 {
+        width: 45%;
+      }
+
+     
+      .footer {
+        text-align: center;
+        margin-top: 10px;
+        color: #666;
+      }
+    </style> -->
+  </head>
+  <body>
+    <div class="contaiiner">
+      <!-- <center> -->
+      <div class="left">
+        <h1 style="font-size: 57px;    margin: 0;">Weather Prediction Using Neural Network</h1>
+        <br />
+        <p style="font-size: larger; font-weight: 500; width: 590px;    margin: 0;">
+          Weather prediction using neural networks involves training a model on
+          historical weather data and using it to forecast future weather
+          conditions, leveraging the power of artificial intelligence to improve
+          accuracy and reliability
+        </p>
+      </div>
+      <div class="right">
+        <br />
+        <!-- <div class="container"> -->
+        <h1 style="text-align: center;    margin: 0;">
+          Weather Parameter of <br />Previous Day
+        </h1>
+        <br />
+
+        <div class="form">
+          <form action="/predict" method="post">
+            <label for="temp_max">Maximum Temperature:</label>
+            <input
+              type="text"
+              name="temp_max"
+              id="temp_max"
+              required
+              placeholder="Enter previous day max temperature in degree Celcious"
+            />
+
+            <label for="temp_min">Minimum Temperature:</label>
+            <input
+              type="text"
+              name="temp_min"
+              id="temp_min"
+              required
+              placeholder="Enter previous day min temperature in degree Celcious"
+            />
+
+            <label for="precipitation">Precipitation:</label>
+            <input
+              type="text"
+              name="precipitation"
+              id="precipitation"
+              required
+              placeholder="Enter previous day precipitation in (mm/day) eg.0,1.1,2..."
+            />
+
+            <label for="humidity">Relative Humidity:</label>
+            <input
+              type="text"
+              name="humidity"
+              id="humidity"
+              required
+              placeholder="Enter previous day relative humidity in percent eg. 20-98"
+            />
+
+            <label for="pressure">Pressure:</label>
+            <input
+              type="text"
+              name="pressure"
+              id="pressure"
+              required
+              placeholder="Enter previous day surface pressure in kPa eg.95-99.9"
+            />
+
+            <label for="wind_speed">Wind Speed:</label>
+            <input
+              type="text"
+              name="wind_speed"
+              id="wind_speed"
+              required
+              placeholder="Enter previous day wind speed in m/s eg.0-7"
+            />
+
+            <input class="btn" type="submit" value="Predict" />
+            <br />
+          </form>
+        </div>
+
+        <!-- </div> -->
+      </div>
+      <!-- </center> -->
+    </div>
+  </body>
+</html>
